@@ -16,11 +16,11 @@
     - install
     - git
 
-- name: Set default branch to main
+- name: Set default branch to master
   git_config:
     name: init.defaultBranch
     scope: global
-    value: "main"
+    value: "master"
   tags:
     - install
     - git
