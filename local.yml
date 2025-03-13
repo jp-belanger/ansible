@@ -10,7 +10,6 @@
   vars_files:
     - vars/ssh.yml
   tasks:
-    - import_tasks: tasks/clean-defaults.yml
     - import_tasks: tasks/base-setup.yml
     - import_tasks: tasks/ssh-setup.yml
     - import_tasks: tasks/git-setup.yml

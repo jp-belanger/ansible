@@ -1,3 +1,15 @@
+- name: Remove system default dotfiles on install
+  file:
+    path: "{{ lookup('env', 'HOME') }}/{{ item }}"
+    state: absent
+  with_items:
+    - .zshrc
+    - .Xresources
+    - .config/i3/config
+    - .config/i3/i3blocks.conf
+  tags:
+    - install
+
 - name: Install stow
   become: true
   pacman: 
