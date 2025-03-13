@@ -11,6 +11,8 @@
       - bat
       - alacritty
       - npm
+      - btop
+      - eza
   tags:
     - install
     - tools

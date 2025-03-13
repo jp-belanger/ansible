@@ -1,6 +1,6 @@
-- name: Install rye
+- name: Install uv
   pacman: 
-    name: rye
+    name: uv
   become: true
   tags:
     - install
