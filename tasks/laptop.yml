@@ -1,0 +1,7 @@
+- name: Install system packages
+  become: true
+  pacman:
+    name:
+      - easyeffects
+  tags:
+    - laptop
