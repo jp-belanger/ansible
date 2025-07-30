@@ -1,4 +1,4 @@
-- name: Install system packages
+- name: Install laptop only packages
   become: true
   pacman:
     name:
