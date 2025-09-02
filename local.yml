@@ -19,4 +19,4 @@
     - import_tasks: tasks/nvim-setup.yml
     - import_tasks: tasks/rust-setup.yml
     - import_tasks: tasks/python-setup.yml
-    - import_tasks: tasks/laptop.yml
+    - import_tasks: tasks/laptop-setup.yml
