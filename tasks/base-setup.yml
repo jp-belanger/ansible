@@ -8,21 +8,11 @@
     - install
     - base
 
-- name: Install terminal fonts
-  command: yay -S ttf-sourcecodepro-nerd --noconfirm
-  tags:
-    - install
-    - base
-
-- name: Install terminal fonts
-  command: yay -S ttf-jetbrains-mono-nerd --noconfirm
-  tags:
-    - install
-    - base
-
-
-- name: Install brave browser
-  command: yay -S brave-bin --noconfirm
+- name: Install terminal font
+  become: true
+  pacman:
+    name:
+      - ttf-jetbrains-mono-nerd 
   tags:
     - install
     - base
