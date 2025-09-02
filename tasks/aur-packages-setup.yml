@@ -1,0 +1,44 @@
+- name: Create the `aur_builder` user
+  become: yes
+  ansible.builtin.user:
+    name: aur_builder
+    create_home: true
+    group: wheel
+  tags:
+    - install
+    - aur
+
+- name: Allow the `aur_builder` user to run `sudo pacman` without a password
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/11-install-aur_builder
+    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    create: yes
+    mode: 0644
+    validate: 'visudo -cf %s'
+  tags:
+    - install
+    - aur
+
+
+- name: Install Brave browser
+  kewlfft.aur.aur:
+    use: yay
+    name: brave-bin
+    state: present
+  become: true
+  become_user: aur_builder
+  tags:
+    - install
+    - aur
+
+- name: Install IB Trader Workstation
+  kewlfft.aur.aur:
+    use: yay
+    name: ib-tws
+    state: present
+  become: true
+  become_user: aur_builder
+  tags:
+    - install
+    - aur
