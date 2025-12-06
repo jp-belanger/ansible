@@ -1,10 +1,20 @@
 # ansible
 
-Initial setup for arch-based distros:
+## Install
 ```shell
-$ sudo pacman -Sy ansible
+# install dependencies
+sudo pacman -S --needed git base-devel ansible
 
-$ ansible-galaxy collection install kewlfft.aur
+# Clone and build yay
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+# Clean up
+cd .. && rm -rf yay
 
-$ ansible-playbook local.yml -t install --ask-become-pass --ask-vault-pass
+# setup ansible aur helper
+ansible-galaxy collection install kewlfft.aur
+
+# execute the playbook
+ansible-playbook local.yml -t install --ask-become-pass --ask-vault-pass
 ```
