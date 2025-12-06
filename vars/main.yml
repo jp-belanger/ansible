@@ -1,0 +1,13 @@
+---
+user_name: "{{ lookup('env', 'USER') }}"
+user_home: "{{ lookup('env', 'HOME') }}"
+
+git_user_email: "8102483+jp-belanger@users.noreply.github.com"
+git_user_name: "jp-belanger"
+git_default_branch: "master"
+
+ssh_key_name: "ansible_personal"
+ssh_source_dir: "./.ssh"
+ssh_dest_dir: "{{ user_home }}/.ssh"
+ssh_key_source: "{{ ssh_source_dir }}/{{ ssh_key_name }}"
+ssh_key_dest: "{{ ssh_dest_dir }}/{{ ssh_key_name }}"

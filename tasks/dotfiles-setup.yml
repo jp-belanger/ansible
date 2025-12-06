@@ -1,6 +1,7 @@
+---
 - name: Remove system default dotfiles on install
   file:
-    path: "{{ lookup('env', 'HOME') }}/{{ item }}"
+    path: "{{ user_home }}/{{ item }}"
     state: absent
   with_items:
     - .zshrc
@@ -12,7 +13,7 @@
 
 - name: Install stow
   become: true
-  pacman: 
+  pacman:
     name: stow
   tags:
     - install
@@ -21,7 +22,7 @@
 - name: Cloning dotfiles
   git:
     repo: git@github.com:r3k4mn14r/dotfiles.git
-    dest: "{{ lookup('env', 'HOME') }}/.dotfiles"
+    dest: "{{ user_home }}/.dotfiles"
     recursive: yes
     update: yes
     accept_hostkey: yes
@@ -31,7 +32,7 @@
     - dotfiles
 
 - name: Unlinking previous dotfiles
-  command: "stow -D -t {{ lookup('env', 'HOME') }} -d {{ lookup('env', 'HOME') }}/.dotfiles {{ item }}"
+  command: "stow -D -t {{ user_home }} -d {{ user_home }}/.dotfiles {{ item }}"
   with_items:
     - zsh
     - tmux
@@ -45,7 +46,7 @@
     - dotfiles
 
 - name: Linking dotfiles
-  command: "stow -t {{ lookup('env', 'HOME') }} -d {{ lookup('env', 'HOME') }}/.dotfiles {{ item }}"
+  command: "stow -t {{ user_home }} -d {{ user_home }}/.dotfiles {{ item }}"
   with_items:
     - zsh
     - tmux

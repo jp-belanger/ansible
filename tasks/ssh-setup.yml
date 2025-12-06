@@ -1,6 +1,7 @@
-- name: Ensure .ssh directory exists.
+---
+- name: Ensure .ssh directory exists
   file:
-    dest: "{{ dest_key | dirname }}/s"
+    dest: "{{ ssh_dest_dir }}"
     mode: 0700
     state: directory
   tags:
@@ -9,8 +10,8 @@
 
 - name: Install ssh key
   copy:
-    src: "{{ source_key }}"
-    dest: "{{ dest_key }}"
+    src: "{{ ssh_key_source }}"
+    dest: "{{ ssh_key_dest }}"
     mode: 0600
   tags:
     - install
@@ -18,8 +19,8 @@
 
 - name: Install ssh key public
   copy:
-    src: "{{ source_key }}.pub"
-    dest: "{{ dest_key }}.pub"
+    src: "{{ ssh_key_source }}.pub"
+    dest: "{{ ssh_key_dest }}.pub"
     mode: 0644
   tags:
     - install
@@ -27,17 +28,17 @@
 
 - name: Set authorized key from file
   authorized_key:
-    user: "{{ lookup('env', 'USER') }}"
+    user: "{{ user_name }}"
     state: present
-    key: "{{ lookup('file', lookup('env', 'HOME') + '/.ssh/ansible_personal.pub') }}"
+    key: "{{ lookup('file', ssh_key_source + '.pub') }}"
   tags:
     - install
     - ssh
 
 - name: Install ssh config
   copy:
-    src: "./.ssh/config"
-    dest: "{{ lookup('env', 'HOME') }}/.ssh/config"
+    src: "{{ ssh_source_dir }}/config"
+    dest: "{{ ssh_dest_dir }}/config"
     mode: 0600
   tags:
     - install
