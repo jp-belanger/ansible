@@ -3,7 +3,6 @@
   pacman:
     name:
       - base-devel
-      - yay
   tags:
     - install
     - base
