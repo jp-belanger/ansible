@@ -3,7 +3,7 @@
   pacman:
     name:
       - amd-ucode
-      - power-profile-daemon
+      - power-profiles-daemon
       - brightnessctl
       - bluez
       - linux-firmware
