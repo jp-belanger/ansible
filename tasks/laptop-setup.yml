@@ -12,12 +12,12 @@
 
 
 - name: Enable Hardware Services
-      systemd:
-        name: "{{ item }}"
-        enabled: yes
-        state: started
-      loop:
-        - power-profiles-daemon
-        - bluetooth
+  systemd:
+    name: "{{ item }}"
+    enabled: yes
+    state: started
+  loop:
+    - power-profiles-daemon
+    - bluetooth
   tags:
     - laptop
