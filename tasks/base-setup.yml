@@ -16,7 +16,7 @@
       - swaybg
       - swaylock
       - swayidle
-      - xwayland
+      - xorg-xwayland
       - waybar
       - rofi
       - mako
