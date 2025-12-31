@@ -3,15 +3,69 @@
   pacman:
     name:
       - base-devel
+      - git
   tags:
     - install
     - base
 
-- name: Install terminal font
+- name: Install sway & wayland essentials
+  pacman:
+    name:
+      - sway
+      - swaybg
+      - swaylock
+      - swayidle
+      - waybar
+      - rofi
+      - mako
+      - alacritty
+      - polkit
+      - wl-clipboard
+  tags:
+    - install
+    - base
+
+- name: Install audio
+  pacman:
+    name:
+      - pipewire
+      - wireplumber
+  tags:
+    - install
+    - base
+
+- name: Install greeter
+  pacman:
+    name: ly
+  tags:
+    - install
+    - base
+
+- name: Enable greeter service
+  systemd:
+    name: ly
+    enabled: yes
+  tags:
+    - install
+    - base
+
+- name: Install system applications
+  pacman:
+    name:
+      - thunar
+      - gvfs
+      - thunar-archive-plugin
+  tags:
+    - install
+    - base
+
+- name: Install fonts
   become: true
   pacman:
     name:
       - ttf-jetbrains-mono-nerd 
+      - inter-font
+      - noto-fonts-emoji
   tags:
     - install
     - base
