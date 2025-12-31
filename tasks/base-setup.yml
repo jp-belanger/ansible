@@ -48,7 +48,7 @@
 - name: Enable greeter service
   become: true
   systemd:
-    name: ly@tty.service
+    name: ly@tty2.service
     enabled: yes
     daemon_reload: yes
   tags:
