@@ -8,6 +8,15 @@
     - install
     - ssh
 
+- name: Ensure .ssh/s directory exists
+  file:
+    dest: "{{ ssh_dest_dir }}/s"
+    mode: 0700
+    state: directory
+  tags:
+    - install
+    - ssh
+
 - name: Install ssh key
   copy:
     src: "{{ ssh_key_source }}"
