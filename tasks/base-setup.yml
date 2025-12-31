@@ -49,6 +49,7 @@
   systemd:
     name: ly
     enabled: yes
+    daemon_reload: yes
   tags:
     - install
     - base
