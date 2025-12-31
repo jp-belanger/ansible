@@ -9,6 +9,7 @@
     - base
 
 - name: Install sway & wayland essentials
+  become: true
   pacman:
     name:
       - sway
@@ -26,6 +27,7 @@
     - base
 
 - name: Install audio
+  become: true
   pacman:
     name:
       - pipewire
@@ -35,6 +37,7 @@
     - base
 
 - name: Install greeter
+  become: true
   pacman:
     name: ly
   tags:
@@ -42,6 +45,7 @@
     - base
 
 - name: Enable greeter service
+  become: true
   systemd:
     name: ly
     enabled: yes
@@ -50,6 +54,7 @@
     - base
 
 - name: Install system applications
+  become: true
   pacman:
     name:
       - thunar

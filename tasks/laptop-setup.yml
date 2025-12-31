@@ -12,6 +12,7 @@
 
 
 - name: Enable Hardware Services
+  become: true
   systemd:
     name: "{{ item }}"
     enabled: yes
