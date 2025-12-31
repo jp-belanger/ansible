@@ -26,6 +26,7 @@
     recursive: yes
     update: yes
     accept_hostkey: yes
+    key_file: "{{ user_home }}/.ssh/ansible_personal"
     version: master
   tags:
     - install
