@@ -13,6 +13,8 @@
       - npm
       - btop
       - eza
+      - unzip
+      - wget
   tags:
     - install
     - tools
