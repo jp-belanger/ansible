@@ -40,6 +40,7 @@
     - nvim
     - ipython
     - sway
+    - waybar
     - term
     - alacritty
   tags:
@@ -54,6 +55,7 @@
     - nvim
     - ipython
     - sway
+    - waybar
     - term
     - alacritty
   tags:
