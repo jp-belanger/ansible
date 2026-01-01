@@ -1,7 +1,9 @@
 - name: Install neovim
   become: true
   pacman:
-    name: neovim
+    name:
+      - luarocks
+      - neovim
   tags:
     - install
     - neovim
