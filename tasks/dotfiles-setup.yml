@@ -39,7 +39,7 @@
     - tmux
     - nvim
     - ipython
-    - i3
+    - sway
     - term
     - alacritty
   tags:
@@ -53,7 +53,7 @@
     - tmux
     - nvim
     - ipython
-    - i3
+    - sway
     - term
     - alacritty
   tags:
