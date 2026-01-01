@@ -74,6 +74,7 @@
       - ttf-jetbrains-mono-nerd 
       - inter-font
       - noto-fonts-emoji
+      - otf-font-awesome
   tags:
     - install
     - base
