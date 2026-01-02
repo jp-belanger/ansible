@@ -31,6 +31,7 @@
     - sway
     - waybar
     - alacritty
+    - user-dirs
   tags:
     - install
     - dotfiles
@@ -46,6 +47,7 @@
     - sway
     - waybar
     - alacritty
+    - user-dirs
   tags:
     - install
     - dotfiles
