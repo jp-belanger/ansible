@@ -25,6 +25,8 @@
       - wl-clipboard
       - bluez
       - alacritty
+      - nwg-look
+      - gnome-themes-extra
   tags:
     - install
     - base
