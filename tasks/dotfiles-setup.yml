@@ -1,16 +1,4 @@
 ---
-- name: Remove system default dotfiles on install
-  file:
-    path: "{{ user_home }}/{{ item }}"
-    state: absent
-  with_items:
-    - .zshrc
-    - .Xresources
-    - .config/i3/config
-    - .config/i3/i3blocks.conf
-  tags:
-    - install
-
 - name: Install stow
   become: true
   pacman:
@@ -35,13 +23,14 @@
 - name: Unlinking previous dotfiles
   command: "stow -D -t {{ user_home }} -d {{ user_home }}/.dotfiles {{ item }}"
   with_items:
+    - term
     - zsh
     - tmux
     - nvim
     - ipython
     - sway
     - waybar
-    - term
+    - swaylock
     - alacritty
   tags:
     - install
@@ -50,13 +39,14 @@
 - name: Linking dotfiles
   command: "stow -t {{ user_home }} -d {{ user_home }}/.dotfiles {{ item }}"
   with_items:
+    - term
     - zsh
     - tmux
     - nvim
     - ipython
     - sway
     - waybar
-    - term
+    - swaylock
     - alacritty
   tags:
     - install
