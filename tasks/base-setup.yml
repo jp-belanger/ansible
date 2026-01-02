@@ -19,6 +19,7 @@
       - waybar
       - rofi
       - mako
+      - kanshi
       - alacritty
       - polkit
       - wl-clipboard
@@ -119,6 +120,7 @@
       - networkmanager-dmenu-git
       - swaylock-effects
       - brave-bin
+      - wdisplays
     state: present
   become: true
   become_user: aur_builder
