@@ -14,6 +14,7 @@
       - eza
       - unzip
       - wget
+    state: present
   tags:
     - install
     - tools

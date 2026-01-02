@@ -20,4 +20,3 @@
     - import_tasks: tasks/rust-setup.yml
     - import_tasks: tasks/python-setup.yml
     - import_tasks: tasks/laptop-setup.yml
-    - import_tasks: tasks/aur-packages-setup.yml

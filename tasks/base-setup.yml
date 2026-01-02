@@ -14,7 +14,6 @@
     name:
       - sway
       - swaybg
-      - swaylock
       - swayidle
       - xorg-xwayland
       - waybar
@@ -39,6 +38,7 @@
       - wireplumber
       - alsa-utils
       - pavucontrol
+    state: present
   tags:
     - install
     - base
@@ -48,6 +48,7 @@
   pacman:
     name: ly
     update_cache: yes
+    state: present
   tags:
     - install
     - base
@@ -69,6 +70,7 @@
       - thunar
       - gvfs
       - thunar-archive-plugin
+    state: present
   tags:
     - install
     - base
@@ -81,6 +83,64 @@
       - inter-font
       - noto-fonts-emoji
       - otf-font-awesome
+    state: present
+  tags:
+    - install
+    - base
+
+- name: Create the `aur_builder` user
+  become: yes
+  ansible.builtin.user:
+    name: aur_builder
+    create_home: true
+    group: wheel
+  tags:
+    - install
+    - base
+
+- name: Allow the `aur_builder` user to run `sudo pacman` without a password
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/11-install-aur_builder
+    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    create: yes
+    mode: 0644
+    validate: 'visudo -cf %s'
+  tags:
+    - install
+    - base
+
+
+- name: Install utilities
+  kewlfft.aur.aur:
+    use: yay
+    name:
+      - rofi-bluetooth-git
+      - networkmanager-dmenu-git
+      - swaylock-effects
+      - brave-bin
+    state: present
+  become: true
+  become_user: aur_builder
+  tags:
+    - install
+    - base
+
+- name: Remove sudo privileges for `aur_builder` user
+  become: yes
+  ansible.builtin.file:
+    path: /etc/sudoers.d/11-install-aur_builder
+    state: absent
+  tags:
+    - install
+    - base
+
+- name: Remove the `aur_builder` user
+  become: yes
+  ansible.builtin.user:
+    name: aur_builder
+    state: absent
+    remove: yes
   tags:
     - install
     - base

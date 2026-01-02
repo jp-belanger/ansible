@@ -49,6 +49,7 @@
     name:
       - rofi-bluetooth-git
       - networkmanager-dmenu-git
+      - swaylock-effects
     state: present
   become: true
   become_user: aur_builder

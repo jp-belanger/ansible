@@ -30,7 +30,6 @@
     - ipython
     - sway
     - waybar
-    - swaylock
     - alacritty
   tags:
     - install
@@ -46,7 +45,6 @@
     - ipython
     - sway
     - waybar
-    - swaylock
     - alacritty
   tags:
     - install
