@@ -17,6 +17,7 @@
       - unzip
       - wget
       - obsidian
+      - fastfetch
     state: present
   tags:
     - install
