@@ -3,6 +3,7 @@
   pacman: 
     name:
       - tmux
+      - rsync
       - man
       - less
       - tldr
