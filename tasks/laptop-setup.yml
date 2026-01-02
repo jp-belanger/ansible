@@ -5,8 +5,9 @@
       - amd-ucode
       - power-profiles-daemon
       - brightnessctl
-      - bluez
       - linux-firmware
+      - dmidecode
+      - fwupd
   tags:
     - laptop
 

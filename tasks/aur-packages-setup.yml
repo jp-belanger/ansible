@@ -43,6 +43,19 @@
     - install
     - aur
 
+- name: Install utilities
+  kewlfft.aur.aur:
+    use: yay
+    name:
+      - rofi-bluetooth-git
+      - networkmanager-dmenu-git
+    state: present
+  become: true
+  become_user: aur_builder
+  tags:
+    - install
+    - aur
+
 - name: Remove sudo privileges for `aur_builder` user
   become: yes
   ansible.builtin.file:

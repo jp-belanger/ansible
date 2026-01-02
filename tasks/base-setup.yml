@@ -23,6 +23,7 @@
       - alacritty
       - polkit
       - wl-clipboard
+      - bluez
   tags:
     - install
     - base
@@ -33,6 +34,8 @@
     name:
       - pipewire
       - wireplumber
+      - alsa-utils
+      - pavucontrol
   tags:
     - install
     - base
