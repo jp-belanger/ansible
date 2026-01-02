@@ -33,6 +33,7 @@
     - alacritty
     - kanshi
     - user-dirs
+    - ib-tws
   tags:
     - install
     - dotfiles
@@ -50,6 +51,7 @@
     - alacritty
     - kanshi
     - user-dirs
+    - ib-tws
   tags:
     - install
     - dotfiles
