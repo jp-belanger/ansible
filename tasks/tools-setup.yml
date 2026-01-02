@@ -3,13 +3,12 @@
   pacman: 
     name:
       - tmux
+      - less
       - tldr
       - ripgrep
       - fd
-      - xclip
       - git
       - bat
-      - alacritty
       - npm
       - btop
       - eza

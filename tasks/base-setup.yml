@@ -24,6 +24,7 @@
       - polkit
       - wl-clipboard
       - bluez
+      - alacritty
   tags:
     - install
     - base
