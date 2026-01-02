@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Update and install Ansible
-sudo pacman -Syu --noconfirm ansible
+sudo pacman -Syu --noconfirm base-devel git ansible
 
 # Install Yay
 if ! command -v yay &> /dev/null; then
@@ -17,4 +17,4 @@ fi
 ansible-galaxy collection install kewlfft.aur
 
 # Run the Playbook
-# ansible-playbook local.yml --ask-become-pass
+ansible-playbook local.yml -t install --ask-become-pass --ask-vault-pass
