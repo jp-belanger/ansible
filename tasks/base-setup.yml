@@ -27,6 +27,7 @@
       - alacritty
       - nwg-look
       - gnome-themes-extra
+      - xdg-utils
   tags:
     - install
     - base

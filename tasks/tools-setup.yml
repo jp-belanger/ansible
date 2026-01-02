@@ -3,6 +3,7 @@
   pacman: 
     name:
       - tmux
+      - man
       - less
       - tldr
       - ripgrep
