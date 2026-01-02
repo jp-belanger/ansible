@@ -31,6 +31,7 @@
     - sway
     - waybar
     - alacritty
+    - kanshi
     - user-dirs
   tags:
     - install
@@ -47,6 +48,7 @@
     - sway
     - waybar
     - alacritty
+    - kanshi
     - user-dirs
   tags:
     - install
