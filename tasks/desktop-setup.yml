@@ -1,0 +1,12 @@
+- name: Install desktop only packages
+  become: true
+  pacman:
+    name:
+      - amd-ucode
+      - nvidia-open
+      - nvidia-utils
+      - nvidia-settings
+  tags:
+    - desktop
+
+

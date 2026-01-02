@@ -26,7 +26,6 @@
       - alacritty
       - nwg-look
       - gnome-themes-extra
-      - xdg-user-dirs
   tags:
     - install
     - base
@@ -63,13 +62,6 @@
   tags:
     - install
     - base
-
-- name: Enable xdg-user-dirs service
-  become: true
-  systemd:
-    name: xdg-user-dirs-update.service
-    state: started
-    enabled: yes
 
 - name: Install system applications
   become: true
@@ -152,3 +144,6 @@
   tags:
     - install
     - base
+
+
+
