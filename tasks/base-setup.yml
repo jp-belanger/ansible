@@ -122,6 +122,7 @@
       - swaylock-effects
       - brave-bin
       - wdisplays
+      - rofi-power-menu
     state: present
   become: true
   become_user: aur_builder
