@@ -3,7 +3,6 @@
   pacman:
     name:
       - amd-ucode
-      - power-profiles-daemon
       - brightnessctl
       - linux-firmware
       - dmidecode
@@ -19,7 +18,6 @@
     enabled: yes
     state: started
   loop:
-    - power-profiles-daemon
     - bluetooth
   tags:
     - laptop

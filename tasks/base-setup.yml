@@ -28,6 +28,7 @@
       - nwg-look
       - gnome-themes-extra
       - xdg-utils
+      - power-profiles-daemon
   tags:
     - install
     - base
@@ -90,6 +91,18 @@
     - install
     - base
 
+
+- name: Enable power profile service
+  become: true
+  systemd:
+    name: power-profiles-daemon
+    enabled: yes
+    state: started
+  tags:
+    - install
+    - base
+
+
 - name: Create the `aur_builder` user
   become: yes
   ansible.builtin.user:
@@ -148,6 +161,3 @@
   tags:
     - install
     - base
-
-
-
