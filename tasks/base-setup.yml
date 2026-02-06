@@ -8,6 +8,63 @@
     - install
     - base
 
+- name: Install Networking Stack (NetworkManager + Tailscale)
+  become: true
+  pacman:
+    name:
+      - networkmanager
+      - tailscale
+    state: present
+  tags:
+    - install
+    - base
+
+- name: Configure NetworkManager to use systemd-resolved
+  become: true
+  ansible.builtin.blockinfile:
+    path: /etc/NetworkManager/conf.d/dns.conf
+    create: yes
+    block: |
+      [main]
+      dns=systemd-resolved
+  tags:
+    - install
+    - base
+
+- name: Enable systemd-resolved service
+  become: true
+  systemd:
+    name: systemd-resolved
+    enabled: yes
+    state: started
+  tags:
+    - install
+    - base
+
+- name: Symlink /etc/resolv.conf to systemd-resolved stub
+  become: true
+  ansible.builtin.file:
+    src: /run/systemd/resolve/stub-resolv.conf
+    dest: /etc/resolv.conf
+    state: link
+    force: yes
+  tags:
+    - install
+    - base
+
+- name: Enable and Start NetworkManager and Tailscale
+  become: true
+  systemd:
+    name: "{{ item }}"
+    enabled: yes
+    state: started
+  loop:
+    - NetworkManager
+    - tailscaled
+  tags:
+    - install
+    - base
+
 - name: Install sway & wayland essentials
   become: true
   pacman:
