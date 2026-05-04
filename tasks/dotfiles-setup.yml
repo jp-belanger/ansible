@@ -20,26 +20,8 @@
     - install
     - dotfiles
 
-- name: Unlinking previous dotfiles
-  command: "stow -D -t {{ user_home }} -d {{ user_home }}/.dotfiles {{ item }}"
-  with_items:
-    - term
-    - zsh
-    - tmux
-    - nvim
-    - ipython
-    - sway
-    - waybar
-    - alacritty
-    - kanshi
-    - user-dirs
-    - ib-tws
-  tags:
-    - install
-    - dotfiles
-
 - name: Linking dotfiles
-  command: "stow -t {{ user_home }} -d {{ user_home }}/.dotfiles {{ item }}"
+  command: "stow -R -t {{ user_home }} -d {{ user_home }}/.dotfiles {{ item }}"
   with_items:
     - term
     - zsh
@@ -52,6 +34,7 @@
     - kanshi
     - user-dirs
     - ib-tws
+    - xdg-desktop-portal
   tags:
     - install
     - dotfiles
