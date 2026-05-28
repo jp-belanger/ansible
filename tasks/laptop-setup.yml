@@ -21,3 +21,25 @@
     - bluetooth
   tags:
     - laptop
+
+- name: Ensure logind drop-in directory exists
+  become: true
+  file:
+    path: /etc/systemd/logind.conf.d
+    state: directory
+    mode: '0755'
+  tags:
+    - laptop
+
+- name: Configure clamshell mode
+  become: true
+  copy:
+    dest: /etc/systemd/logind.conf.d/clamshell.conf
+    mode: '0644'
+    content: |
+      [Login]
+      HandleLidSwitch=ignore
+      HandleLidSwitchDocked=ignore
+      HandleLidSwitchExternalPower=ignore
+  tags:
+    - laptop
