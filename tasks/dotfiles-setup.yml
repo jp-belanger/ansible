@@ -35,6 +35,7 @@
     - user-dirs
     - ib-tws
     - xdg-desktop-portal
+    - pi
   tags:
     - install
     - dotfiles
