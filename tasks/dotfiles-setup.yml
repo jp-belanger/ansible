@@ -21,7 +21,7 @@
     - dotfiles
 
 - name: Linking dotfiles
-  command: "stow -R -t {{ user_home }} -d {{ user_home }}/.dotfiles {{ item }}"
+  command: "stow --no-folding -R -t {{ user_home }} -d {{ user_home }}/.dotfiles {{ item }}"
   with_items:
     - term
     - zsh
