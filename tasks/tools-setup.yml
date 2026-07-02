@@ -12,6 +12,7 @@
       - git
       - bat
       - npm
+      - pnpm
       - btop
       - eza
       - unzip
