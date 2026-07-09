@@ -2,8 +2,13 @@
   become: true
   pacman:
     name:
+      - base
       - base-devel
       - git
+      - linux
+      - btrfs-progs
+      - efibootmgr
+      - sof-firmware
   tags:
     - install
     - base
@@ -83,7 +88,7 @@
       - polkit
       - wl-clipboard
       - bluez
-      - alacritty
+      - bluez-utils
       - nwg-look
       - gnome-themes-extra
       - xdg-utils
@@ -97,8 +102,13 @@
   pacman:
     name:
       - pipewire
+      - gst-plugin-pipewire
       - wireplumber
       - alsa-utils
+      - libpulse
+      - pipewire-alsa
+      - pipewire-jack
+      - pipewire-pulse
       - pavucontrol
     state: present
   tags:

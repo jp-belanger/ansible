@@ -4,7 +4,7 @@
     name:
       - tmux
       - rsync
-      - man
+      - man-db
       - less
       - tldr
       - ripgrep
