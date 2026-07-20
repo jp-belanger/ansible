@@ -77,6 +77,7 @@
       - sway
       - swaybg
       - swayidle
+      - swayosd
       - xorg-xwayland
       - waybar
       - rofi
