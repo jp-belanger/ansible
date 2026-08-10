@@ -85,7 +85,7 @@
       - kanshi
       - xdg-desktop-portal-wlr
       - xdg-desktop-portal-gtk
-      - alacritty
+      - ghostty
       - polkit
       - wl-clipboard
       - bluez

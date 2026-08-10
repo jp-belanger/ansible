@@ -36,6 +36,7 @@
     - ib-tws
     - xdg-desktop-portal
     - pi
+    - ghostty
   tags:
     - install
     - dotfiles
