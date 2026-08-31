@@ -9,7 +9,7 @@
 
 - name: Cloning dotfiles
   git:
-    repo: git@github.com:r3k4mn14r/dotfiles.git
+    repo: git@github.com:jp-belanger/dotfiles.git
     dest: "{{ user_home }}/.dotfiles"
     recursive: yes
     update: yes
@@ -33,10 +33,10 @@
     - alacritty
     - kanshi
     - user-dirs
-    - ib-tws
     - xdg-desktop-portal
-    - pi
     - ghostty
+    - pi
+    - ib-tws
   tags:
     - install
     - dotfiles

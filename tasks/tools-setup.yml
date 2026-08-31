@@ -19,6 +19,7 @@
       - wget
       - obsidian
       - fastfetch
+      - jq
     state: present
   tags:
     - install
