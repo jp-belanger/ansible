@@ -173,61 +173,50 @@
     - base
 
 
-- name: Create the `aur_builder` user
-  become: yes
-  ansible.builtin.user:
-    name: aur_builder
-    create_home: true
-    group: wheel
-  tags:
-    - install
-    - base
+- name: Install AUR utilities with a temporary builder
+  block:
+    - name: Create the `aur_builder` user
+      become: true
+      ansible.builtin.user:
+        name: aur_builder
+        create_home: true
+        group: wheel
 
-- name: Allow the `aur_builder` user to run `sudo pacman` without a password
-  become: yes
-  ansible.builtin.lineinfile:
-    path: /etc/sudoers.d/11-install-aur_builder
-    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
-    create: yes
-    mode: 0644
-    validate: 'visudo -cf %s'
-  tags:
-    - install
-    - base
+    - name: Allow the `aur_builder` user to run `sudo pacman` without a password
+      become: true
+      ansible.builtin.lineinfile:
+        path: /etc/sudoers.d/11-install-aur_builder
+        line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+        create: true
+        mode: '0440'
+        validate: 'visudo -cf %s'
 
+    - name: Install utilities
+      kewlfft.aur.aur:
+        use: yay
+        name:
+          - rofi-bluetooth-git
+          - networkmanager-dmenu-git
+          - swaylock-effects
+          - brave-bin
+          - wdisplays
+          - rofi-power-menu
+        state: present
+      become: true
+      become_user: aur_builder
+  always:
+    - name: Remove sudo privileges for `aur_builder` user
+      become: true
+      ansible.builtin.file:
+        path: /etc/sudoers.d/11-install-aur_builder
+        state: absent
 
-- name: Install utilities
-  kewlfft.aur.aur:
-    use: yay
-    name:
-      - rofi-bluetooth-git
-      - networkmanager-dmenu-git
-      - swaylock-effects
-      - brave-bin
-      - wdisplays
-      - rofi-power-menu
-    state: present
-  become: true
-  become_user: aur_builder
-  tags:
-    - install
-    - base
-
-- name: Remove sudo privileges for `aur_builder` user
-  become: yes
-  ansible.builtin.file:
-    path: /etc/sudoers.d/11-install-aur_builder
-    state: absent
-  tags:
-    - install
-    - base
-
-- name: Remove the `aur_builder` user
-  become: yes
-  ansible.builtin.user:
-    name: aur_builder
-    state: absent
-    remove: yes
+    - name: Remove the `aur_builder` user
+      become: true
+      ansible.builtin.user:
+        name: aur_builder
+        state: absent
+        remove: true
   tags:
     - install
     - base

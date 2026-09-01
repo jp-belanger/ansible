@@ -8,6 +8,7 @@
       - dmidecode
       - fwupd
   tags:
+    - never
     - laptop
 
 
@@ -20,6 +21,7 @@
   loop:
     - bluetooth
   tags:
+    - never
     - laptop
 
 - name: Ensure logind drop-in directory exists
@@ -29,6 +31,7 @@
     state: directory
     mode: '0755'
   tags:
+    - never
     - laptop
 
 - name: Configure clamshell mode
@@ -42,4 +45,5 @@
       HandleLidSwitchDocked=ignore
       HandleLidSwitchExternalPower=ignore
   tags:
+    - never
     - laptop

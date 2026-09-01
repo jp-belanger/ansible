@@ -17,6 +17,21 @@
     - install
     - ssh
 
+- name: Trust GitHub SSH host key
+  # If verification starts failing, do not bypass it. GitHub may have
+  # rotated its key. Verify the replacement against the official list:
+  # https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints
+  ansible.builtin.known_hosts:
+    path: "{{ ssh_dest_dir }}/known_hosts"
+    name: github.com
+    key: >-
+      github.com ssh-ed25519
+      AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
+    state: present
+  tags:
+    - install
+    - ssh
+
 - name: Install ssh key
   copy:
     src: "{{ ssh_key_source }}"
@@ -31,15 +46,6 @@
     src: "{{ ssh_key_source }}.pub"
     dest: "{{ ssh_key_dest }}.pub"
     mode: 0644
-  tags:
-    - install
-    - ssh
-
-- name: Set authorized key from file
-  authorized_key:
-    user: "{{ user_name }}"
-    state: present
-    key: "{{ lookup('file', ssh_key_source + '.pub') }}"
   tags:
     - install
     - ssh
