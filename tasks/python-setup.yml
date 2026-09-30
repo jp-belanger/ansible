@@ -1,4 +1,4 @@
-- name: Install uv
+- name: Install python toolchain
   pacman: 
     name:
     - uv
