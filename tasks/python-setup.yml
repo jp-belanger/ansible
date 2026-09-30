@@ -1,6 +1,8 @@
 - name: Install uv
   pacman: 
-    name: uv
+    name:
+    - uv
+    - ty
   become: true
   tags:
     - install
